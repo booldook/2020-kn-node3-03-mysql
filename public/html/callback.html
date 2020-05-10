@@ -1,0 +1,107 @@
+<script>
+/* 	function callbackSum(a, b, cb) {
+		setTimeout(function() {
+			cb(a + b);
+		}, 0);
+	}
+
+	callbackSum(10, 20, function(res){
+		console.log(res);
+	});
+
+	function promiseSum(a, b) {
+		return new Promise(function(resolve, reject){
+			setTimeout(function(){
+				if(typeof a === "number" && typeof b === "number") {
+					resolve(a + b);
+				}
+				else {
+					reject("매개변수는 숫자여야 합니다.");
+				}
+			}, 0);
+		});
+	}
+
+	promiseSum(10, "20").then(function(res){
+		console.log(res);
+	}).catch(function(err){
+		console.log(err);
+	});
+	console.log("hi~");
+
+
+	cb(10, function(res){
+		var a = res;
+		cb2(a, function(res2) {
+			var b = res2;
+			cb3(b, function(res3){
+				console.log(res3);
+				cb4(c, function(res4) {
+					console.log(res4);
+				})
+			})
+		})
+	});
+
+	cb(a).then(function(res){
+
+	}).then(function(res) {
+
+	}).then(function(res3){
+
+	}).then(function(res4){
+
+	}).catch(function(err){
+
+	}); */
+
+var Person = (function(){
+	function Person(fname, lname) {
+		this.fname = fname;
+		this.lname = lname
+	}
+	Person.prototype.fullName = function(){
+		return this.fname + this.lname; 
+	}
+	return Person;
+})();
+
+class Person2 {
+	constructor(fname, lname) {
+		this.fname = fname;
+		this.lname = lname
+	}
+	fullName() {
+		return this.fname + this.lname;
+	}
+}
+
+(function a() {
+	console.log("hi~");
+})();
+
+var hong = new Person("덕규", "임");
+console.log(hong.fullName());
+var hong2 = new Person2("길동", "홍");
+console.log(hong2.fullName());
+
+
+
+function asyncSum(a, b) {
+	return new Promise(function(resolve, reject){
+		setTimeout(function(){
+			if(typeof a === "number" && typeof b === "number") {
+				resolve(a + b);
+			}
+			else {
+				reject("매개변수는 숫자여야 합니다.");
+			}
+		}, 0);
+	});
+}
+
+(async function(){
+	var result = await asyncSum(10, 20);
+	console.log(result);
+})();
+</script>
