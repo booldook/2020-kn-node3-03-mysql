@@ -1,4 +1,34 @@
 <script>
+	function callbackSum(a, b, cb) {
+		setTimeout(function() {
+			cb(a + b);
+		}, 0);
+	}
+
+	callbackSum(10, 20, function(res){
+		console.log(res);
+	});
+
+
+	function promiseSum(a, b) {
+		return new Promise(function(resolve, reject){
+			setTimeout(function(){
+				if(typeof a === "number" && typeof b === "number") {
+					resolve(a + b);
+				}
+				else {
+					reject("매개변수는 숫자여야 합니다.");
+				}
+			}, 0);
+		});
+	}
+
+	promiseSum(10, "20").then(function(res){
+		console.log(res);
+	}).catch(function(err){
+		console.log(err);
+	});
+
 /* 	function callbackSum(a, b, cb) {
 		setTimeout(function() {
 			cb(a + b);
